@@ -1,0 +1,16 @@
+#/bin/bash  -*- mode: shell-script; -*-
+
+declare -r EXAMPLE_DIR='/usr/share/pcaping-strong-iptables'
+
+function post_install {
+    echo -e '\nIf you wish to enable packet captures you will need to install ulogd.'
+    echo "A ready to use ulogd.conf file can be found at ${EXAMPLE_DIR}/ulogd.conf"
+    echo 'Append to or replace /etc/ulogd.conf with this file.'
+    echo -e '\nNote: packet captures can quickly take up a large amount of disk space.'
+    echo 'To remedy this, you should consider installing logrotate.'
+    echo "A ready to use logrotate configuration file can be found at ${EXAMPLE_DIR}/iptables.conf"
+    echo 'Copy this file into /etc/logrotate.d and customized it to your liking.'
+    echo -e '\nSee the iptables.service daemon to enable the firewall.'
+    echo  'Before you do so, you may consider customizing the rules in /etc/iptables.rules'
+    echo 'This is especially important if you are on a remote connection.'
+}

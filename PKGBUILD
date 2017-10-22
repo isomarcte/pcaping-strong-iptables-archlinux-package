@@ -1,16 +1,16 @@
 # Maintainer: David Strawn <isomarcte@gmail.com>
 pkgname=pcaping-strong-iptables
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='A packet capturing iptables based firewall.'
 url="https://github.com/isomarcte/${pkgname}"
 license=('BSD')
 source=("https://github.com/isomarcte/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('6dcec8a29b661fc95fe0df32537d5373')
-sha1sums=('c85e2215cc7dd3bd215ad056458410dabe337fe9')
-sha256sums=('9d2fd0411c9bef37af3fac42aab14ab7daeb46701e1b35e205fea1049de087e4')
-sha384sums=('3a4a6cd3619032094de971e08dcbb1f6c06ab5c55d6c6651e7845a78533fa42d6c5405af777d10cf3e8073b146a3c93d')
-sha512sums=('2aff417efd1483eabb68c265e204fb33362909978c895a8f46126ddc0b8e1be7ef070b85005c2084cdb7ee503572c0cf429dc1ad57fa1c7f1812a19da6a20547')
+md5sums=('9b9d680f72bc8504f206512e8766885d')
+sha1sums=('2e120f8e63f18790f1c8f19cfb4f769b1ff3df5f')
+sha256sums=('a925537c8826b66659413f5b7df0b39d319240aca749a0b56d6b4c74c7664e46')
+sha384sums=('70c962046b85aff668f6394a12d0e7916855eae037e4ed159e24c93efe9117bfa94f7f9f73525069317c35aad4576824')
+sha512sums=('f53b5dfb3bdaaa2e1cbf5eac10bcd96502817c527ef438f6838192f6b16f17b3d4298ad35cfc5251704be025ee38c8c27b723817811b3351ebaf113dd181914b')
 arch=('any')
 depends=('iptables'
          'systemd')

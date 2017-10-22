@@ -1,16 +1,16 @@
 # Maintainer: David Strawn <isomarcte@gmail.com>
 pkgname=pcaping-strong-iptables
-pkgver=2.2.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='A packet capturing iptables based firewall.'
 url="https://github.com/isomarcte/${pkgname}"
 license=('BSD')
 source=("https://github.com/isomarcte/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('9b9d680f72bc8504f206512e8766885d')
-sha1sums=('2e120f8e63f18790f1c8f19cfb4f769b1ff3df5f')
-sha256sums=('a925537c8826b66659413f5b7df0b39d319240aca749a0b56d6b4c74c7664e46')
-sha384sums=('70c962046b85aff668f6394a12d0e7916855eae037e4ed159e24c93efe9117bfa94f7f9f73525069317c35aad4576824')
-sha512sums=('f53b5dfb3bdaaa2e1cbf5eac10bcd96502817c527ef438f6838192f6b16f17b3d4298ad35cfc5251704be025ee38c8c27b723817811b3351ebaf113dd181914b')
+md5sums=('bec6d74997e6912bb27b2860b523e199')
+sha1sums=('0709a19467189db4ed3121bdba0499d904a518e8')
+sha256sums=('e94cf017e8afa8463f0a7ef6b78265825af5229857bd4dacd382267771431c49')
+sha384sums=('538749f60b939a33f927568300c47c6c383c9e5b85f0b44bd74874caa985cb683f8137ea8b395ecc1ea4d87c73c868af')
+sha512sums=('e80efbbc476e3060c7788173e4aec3e95df948c56a95a488ff180f882139e6583d815656961a12eb843e79e5c2362a2fd7c85976362d78777a982718aa4b311d')
 arch=('any')
 depends=('iptables'
          'systemd')
@@ -34,15 +34,18 @@ package() {
     # Fix the file location for Arch Linux
 
     local -r DESTDIR_ETC="${pkgdir}/etc"
+    local -r DESTDIR_PACKAGE="${pkgdir}/usr/share/pcaping-strong-iptables"
     local -r DESTDIR_SYSTEMD="${pkgdir}/usr/lib/systemd/system"
     local -r DESTDIR_USR_SBIN="${pkgdir}/usr/sbin"
 
     install -d "${DESTDIR_ETC}/iptables"
 
-    mv "${DESTDIR_ETC}/iptables.up.rules" "${DESTDIR_ETC}/iptables/iptables.rules"
+    mv "${DESTDIR_PACKAGE}/iptables.up.rules" "${DESTDIR_ETC}/iptables/iptables.rules"
+    mv "${DESTDIR_PACKAGE}/ip6tables.up.rules" "${DESTDIR_ETC}/iptables/ip6tables.rules"
     rm -d "${DESTDIR_ETC}/iptables.up.rules.d"
-    rm "${DESTDIR_ETC}/iptables.down.rules" # Arch Linux daemon already handles this.
+    rm "${DESTDIR_PACKAGE}/iptables.down.rules" # Arch Linux daemon already handles this.
     rm "${pkgdir}/usr/lib/systemd/system/iptables.service" # Arch Linux already provides this.
+
     rm -r "${pkgdir}/usr/sbin"
     rm -r "${pkgdir}/usr/lib"
 }
